@@ -14,11 +14,11 @@ To get started, open a terminal using the JupyterLab launcher. You will see
 something like this.
 
 ~~~
-jovyan@jupyter-rabernat:~$
+jovyan@jupyter-yutianwuldeo:~$
 ~~~
 
 The dollar sign is a **prompt**, which shows us that the shell is waiting for input.
-`jovyan` is our **username** and `jupyter-rabernat` is the **hostname**.
+`jovyan` is our **username** and `jupyter-yutianwuldeo` is the **hostname**.
 Because we are using JupyterHub on the cloud, we all have the same username
 ("jovyan" = resident of the planet Jupyter). However, we each have a different
 hostname (the name of the computer we are using), which corresponds to a
@@ -36,7 +36,7 @@ and to find out your hostname
 
 ~~~
 $ hostname
-jupyter-rabernat
+jupyter-yutianwuldeo
 ~~~
 
 Next,
@@ -95,7 +95,7 @@ $ ls
 
 
 ~~~
-config.yaml  examples  lost+found  work  worker-template.yaml
+GR6901  GR6901backup0827  data  examples  github-sandbox  shared
 ~~~
 
 `ls` prints the names of the files and directories in the current directory in
@@ -108,11 +108,23 @@ which tells `ls` to add a trailing `/` to the names of directories:
 $ ls -F
 ~~~
 
+~~~
+GR6901/  GR6901backup0827/  data/  examples/  github-sandbox/  shared/
+~~~
+
+Special directory .. doesn’t usually show up when we run ls. If we want to display it, we can give `ls` the `-a` flag:
 
 ~~~
-config.yaml  examples/  lost+found/  work/  worker-template.yaml
+$ ls -F -a
 ~~~
 
+~~~
+./             .cache/   .gitconfig           .jupyter/  .ssh/                GR6901/            examples/
+../            .config/  .ipynb_checkpoints/  .lesshst   .viminfo             GR6901backup0827/  github-sandbox/
+.bash_history  .git/     .ipython/            .local/    .virtual_documents/  data/              shared/
+~~~
+
+`-a` stands for “show all”; it forces `ls` to show us file and directory names that begin with `.`, such as `..` (which, if we’re in /home/jovyan, refers to the /home directory) As you can see, it also displays another special directory `.cache/`, which is a user-specific storage space for temporary items in a computer system, and we’ll see some uses for it soon.
 
 `ls` has lots of other options. To find out what they are, we can type:
 
@@ -127,33 +139,23 @@ you may use the up and down arrow keys to move line-by-line,
 or try the "b" and spacebar keys to skip up and down by full page.
 Quit the `man` pages by typing "q".
 
+* However, `man` package is not installed on the LEAP Pangeo. But you can always google it!
+
 Here,
 we can see that our home directory contains mostly **sub-directories**.
 Any names in your output that don't have trailing slashes,
 are plain old **files**.
 
 We can also use `ls` to see the contents of a different directory.  Let's take a
-look at our `examples` directory by running `ls -F examples`,
-i.e.,
-the command `ls` with the **arguments** `-F` and `examples`.
-The second argument --- the one *without* a leading dash --- tells `ls` that
-we want a listing of something other than our current working directory:
+look at our `github-sandbox` directory by running `ls -F github-sandbox`:
 
 ~~~
-$ ls -F examples
+$ ls -F github-sandbox
 ~~~
 
 ~~~
-content/                                                LICENSE           publishconf.py
-develop_server.sh*                                      Makefile          README.md
-DONT_SAVE_ANYTHING_HERE.md                              pelicanconf.py    themes/
-fabfile.py                                              pelican-plugins/
-github_deploy_key_rabernat_research_computing_2018.enc  plugins/
+LICENSE  README.md  sample.md  sample.py  sample.txt
 ~~~
-
-The output is the list of all the files in the `examples` directory.
-The examples directory on our JupyterHub is automatically populated with files
-from the [Git Source Repository for the class](https://github.com/rabernat/research_computing_2018)
 
 The command to change locations is `cd` followed by a
 directory name to change our working directory.
@@ -162,22 +164,12 @@ which is a bit misleading:
 the command doesn't change the directory,
 it changes the shell's idea of what directory we are in.
 
-Let's say we want to move to the `content` directory we saw above.  We can
+Let's say we want to move to the `github-sandbox` directory we saw above.  We can
 use the following series of commands to get there:
 
 ~~~
-$ cd examples
-$ cd content
+$ cd github-sandbox
 ~~~
-
-
-These commands will move us from our home directory onto into
-the `examples` directory, then into the `content` directory. `cd` doesn't print anything,
-but if we run `pwd` after it, we can see that we are now
-in `/home/jovyan/examples/content`.
-If we run `ls` without arguments now,
-it lists the contents of `/home/jovyan/examples/content`,
-because that's where we now are.
 
 We now know how to go down the directory tree, but
 how do we go up?  
@@ -188,42 +180,20 @@ that looks like this:
 $ cd ..
 ~~~
 
-
 `..` is a special directory name meaning
 "the directory containing this one",
 or more succinctly,
 the **parent** of the current directory.
 Sure enough,
-if we run `pwd` after running `cd ..`, we're back in `/home/jovyan/examples`:
+if we run `pwd` after running `cd ..`, we're back in `/home/jovyan`:
 
 ~~~
 $ pwd
 ~~~
 
 ~~~
-/home/jovyan/examples
+/home/jovyan
 ~~~
-
-e special directory `..` doesn't usually show up when we run `ls`.  If we want
-to display it, we can give `ls` the `-a` flag:
-
-~~~
-$ ls -F -a
-~~~
-
-
-`-a` stands for "show all";
-it forces `ls` to show us file and directory names that begin with `.`,
-such as `..` (which, if we're in `/home/jovyan`, refers to the `/home` directory)
-As you can see,
-it also displays another special directory that's just called `.`,
-which means "the current working directory".
-It may seem redundant to have a name for it,
-but we'll see some uses for it soon.
-
-Note that in most command line tools, multiple parameters can be combined
-with a single `-` and no spaces between the parameters: `ls -F -a` is
-equivalent to `ls -Fa`.
 
 These then, are the basic commands for navigating the filesystem on your computer:
 `pwd`, `ls` and `cd`.  Let's explore some variations on those commands.  What happens
@@ -234,108 +204,27 @@ a directory?
 $ cd
 ~~~
 
-
 How can you check what happened?  `pwd` gives us the answer!  
 
 ~~~   
 $ pwd
 ~~~
 
-
 ~~~
 /home/jovyan
 ~~~
 
 It turns out that `cd` without an argument will return you to your home directory,
-which is great if you've gotten lost in your own filesystem.  
-
-Let's try returning to the `content` directory from before.  Last time, we used
-three commands, but we can actually string together the list of directories
-to move to `data` in one step:
-
-~~~
-$ cd examples/content
-~~~
-
-
-Check that we've moved to the right place by running `pwd` and `ls -F`  
-
-If we want to move up one level from the data directory, we could use `cd ..`.  But
-there is another way to move to any directory, regardless of your
-current location.  
-
-So far, when specifying directory names, or even a directory path (as above),
-we have been using **relative paths**.  When you use a relative path with a command
-like `ls` or `cd`, it tries to find that location  from where we are,
-rather than from the root of the file system.  
-
-However, it is possible to specify the **absolute path** to a directory by
-including its entire path from the root directory, which is indicated by a
-leading slash.  The leading `/` tells the computer to follow the path from
-the root of the file system, so it always refers to exactly one directory,
-no matter where we are when we run the command.
-
-This allows us to move to our `examples` directory from anywhere on
-the filesystem.  To find the absolute path
-we're looking for, we can use `pwd` and then extract the piece we need
-to move to `examples`.  
-
-~~~
-$ pwd
-~~~
-
-
-~~~
-/home/jovyan/examples/content
-~~~
-
-
-~~~
-$ cd /home/jovyan/examples
-~~~
-
-
-Run `pwd` and `ls -F` to ensure that we're in the directory we expect.  
-
-#### Two More Shortcuts
-
-The shell interprets the character `~` (tilde) at the start of a path to
-mean "the current user's home directory". For example, if Nelle's home
-directory is `/home/jovyan`, then `~/examples` is equivalent to
-`/home/jovyan/examples`. This only works if it is the first character in the
-path.
-
-Another shortcut is the `-` (dash) character.  `cd` will translate `-` into
-*the previous directory I was in*, which is faster than having to remember,
-then type, the full path.  This is a *very* efficient way of moving back
-and forth between directories. The difference between `cd ..` and `cd -` is
-that the former brings you *up*, while the latter brings you *back*. You can
-think of it as the *Last Channel* button on a TV remote.
+which is great if you've gotten lost in your own filesystem. 
 
 #### Tab Completion
 
 Typing the full path to directories and files can be slow and annoying.
-Fortunately, we have "tab completion" to help us. Try typing `cd ex` and then
+Fortunately, we have "tab completion" to help us. Try typing `cd sh` and then
 press the `<tab>`. The system will try to "auto complete" your command.
 Pressing tab twice brings up a list of all the files, and so on.
 This is called **tab completion**,
 and we will see it in many other tools as we go on.
-
-#### Key Points:
-- "The file system is responsible for managing information on the disk."
-- "Information is stored in files, which are stored in directories (folders)."
-- "Directories can also store other directories, which forms a directory tree."
-- "`cd path` changes the current working directory."
-- "`ls path` prints a listing of a specific file or directory; `ls` on its own lists the current working directory."
-- `pwd` prints the user's current working directory.
-- `whoami` shows the user's current identity.
-- `/` on its own is the root directory of the whole file system.
-- A relative path specifies a location starting from the current location.
-- An absolute path specifies a location from the root of the file system.
-- Directory names in a path are separated with '/' on Unix, but '\\\\' on Windows.
-- '..' means 'the directory above the current one'; '.' on its own means 'the current directory'.
-- Most files' names are `something.extension`. The extension isn't required, and doesn't guarantee anything, but is normally used to indicate the type of data in the file.
-- Most commands take options (flags) which begin with a '-'.
 
 ## Working with Files and Directories
 
@@ -349,21 +238,9 @@ $ cd
 $ pwd
 ~~~
 
-
 ~~~
 /home/jovyan
 ~~~
-
-
-~~~
-$ ls -F
-~~~
-
-
-~~~
-config.yaml  examples/  lost+found/  work/  worker-template.yaml
-~~~
-
 
 Let's create a new directory called `thesis` using the command `mkdir thesis`
 (which has no output):
@@ -371,7 +248,6 @@ Let's create a new directory called `thesis` using the command `mkdir thesis`
 ~~~
 $ mkdir thesis
 ~~~
-
 
 As you might guess from its name,
 `mkdir` means "make directory".
@@ -383,13 +259,73 @@ the new directory is created in the current working directory:
 $ ls -F
 ~~~
 
+~~~
+GR6901/  GR6901backup0827/  data/  examples/  github-sandbox/  shared/  thesis/
+~~~
+
+Since we've just created the `thesis` directory, there's nothing in it yet:
 
 ~~~
-config.yaml  examples/  lost+found/  thesis/  work/  worker-template.yaml
+$ ls -F thesis
 ~~~
 
+Let's change our working directory to `thesis` using `cd`.
+We then create a blank new file called `draft.txt` using the `touch command`:
 
-## Good names for files and directories
+~~~
+$ cd thesis
+$ touch draft.txt
+~~~
+
+Now we can edit the file in JupyterLab's text editor. 
+
+The most widely used command-line editors are `vim`, `emacs`, and `nano`. Since `vim` is available on the LEAP Pangeo, let's talk about `vim`.
+
+We can open an existing file by entering `vim` in the shell followed by the name of the file:
+
+~~~
+$ vim draft.txt
+~~~
+
+When we first open a document, we always start in normal mode, in which we can easily copy, paste, and delete (as well as other functionality). To enter insert mode to add and remove text, press the letter `i` or the `Insert` key.
+
+Let's type in a few lines of text.
+
+Once we're happy with our text, to exit insert mode, press the `Esc` key. We can save a file that is currently open by entering the `:w` command. We can then quit an open file by entering the `:q` command. If you have made any edits without saving, you will see an error message. If you wish to quit without saving the edits, use `:q!`.
+
+More on `vim` can be found [here]('https://cvw.cac.cornell.edu/linux/text-editors/vim') for instance.
+
+`ls` now shows that we have created a file called `draft.txt`:
+
+~~~
+$ ls
+draft.txt
+~~~
+
+Let's tidy up by running `rm draft.txt`:
+
+~~~
+$ rm draft.txt
+~~~
+
+This command removes files (`rm` is short for "remove").
+If we run `ls` again,
+its output is empty once more,
+which tells us that our file is gone:
+
+~~~
+$ ls
+~~~
+
+*Your home directory is intended only for notebooks, analysis scripts, and small datasets (< 1 GB). It is not an appropriate place to store large datasets. Unlike the cloud buckets, these directories use an underlying storage with a rigid limit. If a single user fills up the space, the Hub crashes for everyone. LEAP Pangeo recommends users use less than 25GB and enforce a hard limit of 50GB.* 
+
+*To check how much space you are using in your home directory open a terminal window on the hub and run:*
+
+~~~
+$ du -h --max-depth=1 ~/ | sort -h
+~~~
+
+### Good names for files and directories
 
  Complicated names of files and directories can make your life painful
  when working on the command line. Here we provide a few useful
@@ -416,52 +352,7 @@ config.yaml  examples/  lost+found/  thesis/  work/  worker-template.yaml
  If you need to refer to names of files or directories that have whitespace
  or another non-alphanumeric character, you should surround the name in quotes (`""`).
 
-
-Since we've just created the `thesis` directory, there's nothing in it yet:
-
-~~~
-$ ls -F thesis
-~~~
-
-
-Let's change our working directory to `thesis` using `cd`.
-We then create a blank new file called `draft.txt` using the `touch command`:
-
-~~~
-$ cd thesis
-$ touch draft.txt
-~~~
-
-Now we can edit the file in JupyterLab's text editor.
-Let's type in a few lines of text.
-Once we're happy with our text, we save the file, and
-return to the shell.
-
-`ls` now shows that we have created a file called `draft.txt`:
-
-~~~
-$ ls
-draft.txt
-~~~
-
-Let's tidy up by running `rm draft.txt`:
-
-~~~
-$ rm draft.txt
-~~~
-
-
-This command removes files (`rm` is short for "remove").
-If we run `ls` again,
-its output is empty once more,
-which tells us that our file is gone:
-
-~~~
-$ ls
-~~~
-
-
-#### Deleting Is Forever
+### Deleting Is Forever
 
 The Unix shell doesn't have a trash bin that we can recover deleted
 files from (though most graphical interfaces to Unix do).  Instead,
@@ -471,15 +362,12 @@ recovering deleted files do exist, but there's no guarantee they'll
 work in any particular situation, since the computer may recycle the
 file's disk space right away.
 
-
-Let's re-create that file
-and then move up one directory to `/home/jovyan` using `cd ..`:
+Let's re-create that file and then move up one directory to `/home/jovyan` using `cd ..`:
 
 ~~~
 $ touch draft.txt
 $ cd ..
 ~~~
-
 
 If we try to remove the entire `thesis` directory using `rm thesis`,
 we get an error message:
@@ -487,7 +375,6 @@ we get an error message:
 ~~~
 $ rm thesis
 ~~~
-
 
 ~~~
 rm: cannot remove `thesis`: Is a directory
@@ -502,8 +389,7 @@ We can do this with the [recursive](https://en.wikipedia.org/wiki/Recursion) opt
 $ rm -r thesis
 ~~~
 
-
-#### With Great Power Comes Great Responsibility
+### With Great Power Comes Great Responsibility
 
  Removing the files in a directory recursively can be very dangerous
  operation. If we're concerned about what we might be deleting we can
@@ -517,10 +403,8 @@ $ rm -r thesis
  rm: remove directory ‘thesis’? y
 ~~~
 
-
  This removes everything in the directory, then the directory itself, asking
  at each step for you to confirm the deletion.
-
 
 Let's create that directory and file one more time.
 
@@ -530,11 +414,9 @@ $ touch thesis/draft.txt
 $ ls thesis
 ~~~
 
-
 ~~~
 draft.txt
 ~~~
-
 
 `draft.txt` isn't a particularly informative name,
 so let's change the file's name using `mv`,
@@ -543,7 +425,6 @@ which is short for "move":
 ~~~
 $ mv thesis/draft.txt thesis/quotes.txt
 ~~~
-
 
 The first parameter tells `mv` what we're "moving",
 while the second is where it's to go.
@@ -556,7 +437,6 @@ Sure enough,
 ~~~
 $ ls thesis
 ~~~
-
 
 ~~~
 quotes.txt
@@ -583,14 +463,12 @@ the directory name we use is the special directory name `.` that we mentioned ea
 $ mv thesis/quotes.txt .
 ~~~
 
-
 The effect is to move the file from the directory it was in to the current working directory.
 `ls` now shows us that `thesis` is empty:
 
 ~~~
 $ ls thesis
 ~~~
-
 
 Further,
 `ls` with a filename or directory name as a parameter only lists that file or directory.
@@ -600,11 +478,9 @@ We can use this to see that `quotes.txt` is still in our current directory:
 $ ls quotes.txt
 ~~~
 
-
 ~~~
 quotes.txt
 ~~~
-
 
 The `cp` command works very much like `mv`,
 except it copies a file instead of moving it.
@@ -617,56 +493,36 @@ $ cp quotes.txt thesis/quotations.txt
 $ ls quotes.txt thesis/quotations.txt
 ~~~
 
-
 ~~~
 quotes.txt   thesis/quotations.txt
 ~~~
 
+## Connecting to a Linux Server 
 
-To prove that we made a copy,
-let's delete the `quotes.txt` file in the current directory
-and then run that same `ls` again.
-
-~~~
-$ rm quotes.txt
-$ ls quotes.txt thesis/quotations.txt
-~~~
-
-
-~~~
-ls: cannot access quotes.txt: No such file or directory
-thesis/quotations.txt
-~~~
-
-This time it tells us that it can't find `quotes.txt` in the current directory,
-but it does find the copy in `thesis` that we didn't delete.
-
-### Key Points
-- `cp old new` copies a file.
-- `mkdir path` creates a new directory.
-- `mv old new` moves (renames) a file or directory.
-- `rm path` removes (deletes) a file.
-- Use of the Control key may be described in many ways, including `Ctrl-X`, `Control-X`, and `^X`.
-- The shell does not have a trash bin: once something is deleted, it's really gone.
-- Depending on the type of work you do, you may need a more powerful text editor than Nano.
-
-## WU! Connecting to a Linux Server 
-
-We typically use `ssh` to connect to a linux server. However, because this notebook server is a linux “virtual machine", we can't ssh in! But we can use the terminal via the JupyterLab launcher and ssh / scp / ftp to remote systems.
+We typically use `ssh` to connect to a linux server. However, because this notebook server is a linux “virtual machine", we can't `ssh` in! But we can use the terminal via the JupyterLab launcher and `ssh` / `scp` / `ftp` to remote systems (if you have access to them). For example, we can `ssh` to a HPC called Derecho:
 
 ~~~
 $ ssh yutian@derecho.hpc.ucar.edu
 ~~~
 
+We can also move a file `test.m` from Derecho to LEAP Pangeo by using `scp`:
+
 ~~~
 $ scp yutian@derecho.hpc.ucar.edu:/glade/u/home/yutian/scripts/ars22/test.m .
 ~~~
 
-## WU! Editing Files 
-
-~~~
-$ nano
-~~~
+## Key Points
+- `pwd` prints working directory
+- `ls` lists the names of the files and directories in the current directory
+- `cd dir` changes the current working directory
+- `cp old new` copies a file
+- `mkdir path` creates a new directory
+- `vim file` edits a file
+- `mv old new` moves (renames) a file or directory
+- `rm path` removes (deletes) a file
+- `ssh` enables secure logins to remote computers
+- `scp` secure copies between servers
+- The shell does not have a trash bin: once something is deleted, it's really gone.
 
 ## Learning More
 
