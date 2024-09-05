@@ -2,6 +2,8 @@
 
 An introduction to basic Unix commands and the file system.
 
+*The notes below are adapted from our [textbook](https://earth-env-data-science.github.io/lectures/environment/intro_to_unix.html).*
+
 *The notes below are modified from the excellent [Unix Shell tutorial ](http://swcarpentry.github.io/shell-novice/) that is freely available on the Software Carpentry website. We highly recommend checking out the full version for further reading. The material is being used here under the terms of the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/).*
 
 ---
@@ -112,7 +114,7 @@ $ ls -F
 GR6901/  GR6901backup0827/  data/  examples/  github-sandbox/  shared/
 ~~~
 
-Special directory .. doesn’t usually show up when we run ls. If we want to display it, we can give `ls` the `-a` flag:
+Special directory .. doesn’t usually show up when we run `ls`. If we want to display it, we can give `ls` the `-a` flag:
 
 ~~~
 $ ls -F -a
@@ -139,7 +141,7 @@ you may use the up and down arrow keys to move line-by-line,
 or try the "b" and spacebar keys to skip up and down by full page.
 Quit the `man` pages by typing "q".
 
-* However, `man` package is not installed on the LEAP Pangeo. But you can always google it!
+*However, `man` package is not installed on the LEAP Pangeo. But you can always google it!*
 
 Here,
 we can see that our home directory contains mostly **sub-directories**.
@@ -279,7 +281,7 @@ $ touch draft.txt
 
 Now we can edit the file in JupyterLab's text editor. 
 
-The most widely used command-line editors are `vim`, `emacs`, and `nano`. Since `vim` is available on the LEAP Pangeo, let's talk about `vim`.
+The most widely used command-line **editors** are `vim`, `emacs`, and `nano`. Since `vim` is available on the LEAP Pangeo, let's talk about `vim`.
 
 We can open an existing file by entering `vim` in the shell followed by the name of the file:
 
@@ -293,7 +295,7 @@ Let's type in a few lines of text.
 
 Once we're happy with our text, to exit insert mode, press the `Esc` key. We can save a file that is currently open by entering the `:w` command. We can then quit an open file by entering the `:q` command. If you have made any edits without saving, you will see an error message. If you wish to quit without saving the edits, use `:q!`.
 
-More on `vim` can be found [here]('https://cvw.cac.cornell.edu/linux/text-editors/vim') for instance.
+More on `vim` can be found [here](https://cvw.cac.cornell.edu/linux/text-editors/vim) for instance.
 
 `ls` now shows that we have created a file called `draft.txt`:
 
@@ -317,7 +319,7 @@ which tells us that our file is gone:
 $ ls
 ~~~
 
-*Your home directory is intended only for notebooks, analysis scripts, and small datasets (< 1 GB). It is not an appropriate place to store large datasets. Unlike the cloud buckets, these directories use an underlying storage with a rigid limit. If a single user fills up the space, the Hub crashes for everyone. LEAP Pangeo recommends users use less than 25GB and enforce a hard limit of 50GB.* 
+*Your home directory is intended only for notebooks, analysis scripts, and small datasets (< 1 GB). It is not an appropriate place to store large datasets. Unlike the cloud buckets, these directories use an underlying storage with a rigid limit. If a single user fills up the space, the Hub crashes for everyone. [LEAP Pangeo](https://leap-stc.github.io/leap-pangeo/jupyterhub.html#) recommends users use less than 25GB and enforce a hard limit of 50GB.* 
 
 *To check how much space you are using in your home directory open a terminal window on the hub and run:*
 
@@ -499,7 +501,7 @@ quotes.txt   thesis/quotations.txt
 
 ## Connecting to a Linux Server 
 
-We typically use `ssh` to connect to a linux server. However, because this notebook server is a linux “virtual machine", we can't `ssh` in! But we can use the terminal via the JupyterLab launcher and `ssh` / `scp` / `ftp` to remote systems (if you have access to them). For example, we can `ssh` to a HPC called Derecho:
+We typically use `ssh` to connect to a linux server. However, because this notebook server, LEAP Pangeo, is a linux “virtual machine", we can't `ssh` in! But we can use the terminal via the JupyterLab launcher and `ssh` / `scp` / `ftp` to remote systems (if you have access to them). For example, we can `ssh` to a HPC called Derecho:
 
 ~~~
 $ ssh yutian@derecho.hpc.ucar.edu
