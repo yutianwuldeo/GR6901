@@ -1,13 +1,10 @@
 # Installing and Running Python
 
+An introduction of different ways to run Python code, installing and managing Python with Conda, and running Python with JupyterHub.
+
+*The notes below are adapted from our [textbook](https://earth-env-data-science.github.io/lectures/environment/python_environments.html#) and [Pythia Foundations](https://foundations.projectpythia.org/foundations/getting-started-python.html#).*
+
 ---
-
-## Overview
-
-This section provides an overview of different ways to run Python code, and quickstart guides for:
-
-1.  Choosing a Python platform
-2.  Installing and managing Python with Conda
 
 ## Choosing a Python Platform
 
@@ -34,17 +31,15 @@ For learners who are familiar with basic [Linux commands](https://cheatography.c
 
 We highly encourage the use of Jupyter notebooks: a free, open-source, interactive tool running inside a web browser that allows you to run Python code in "cells." This means that your workflow can alternate between code, output, and even Markdown-formatted explanatory sections that create an easy-to-follow analysis or "computational narrative" from start to finish. Jupyter notebooks are a great option for presentations or learning tools. For these reasons, Jupyter is very popular among scientists. Most lessons in this book will be taught via Jupyter notebooks.
 
-[How to Run Python in a Jupyter Session](jupyter.md)
-
-MORE ON LEAP-Pangeo JupyterHub at the end!!! 
+*MORE ON LEAP-Pangeo JupyterHub*
 
 ### Other IDEs
 
 If you code in other languages, you might already have a favorite IDE that will work just as well in Python. [Spyder](https://www.spyder-ide.org) is a Python specific IDE that comes with the [Anaconda download](https://www.anaconda.com/products/distribution). It is perhaps the most familiar IDE if you are coming from languages such as [Matlab](https://www.mathworks.com/products/matlab.html) that have a language specific platform and display a list of variables. [PyCharm](https://www.jetbrains.com/pycharm/) and [Visual Studio Code](https://code.visualstudio.com) are also popular IDEs. Many IDEs offer support for terminal execution, scripts, and Jupyter display. To learn about your specific IDE, visit its official documentation.
 
-_We recommend eventually learning how to develop and run Python code in each of these platforms._
-
 ## Installing and managing Python with Conda
+
+*This is the general guidnace for installing and managing Python with Conda. With the LEAP Pangeo JupyterHub, a set of packages has already been installed and is good to use. More on the LEAP Pangeo ...*
 
 Conda is an open-source, cross-platform, language-agnostic package manager and environment management system that allows you to quickly install, run, and update packages within your work environment(s). Conda is a vital component of the Python ecosystem. Understanding it is important, regardless of the platform you chose to run your Python code.
 
@@ -52,7 +47,7 @@ It is strongly recommended to read official
 [Getting Started with Conda](https://conda.io/docs/user-guide/getting-started.html#)
 guide.
 
-To create a conda environment, you execute the following command:
+To create a conda environment, you execute the following command in the terminal:
 
     $ conda create --name my_environment python=3.9 numpy
 
@@ -80,7 +75,7 @@ To see all the environments on your system:
 If you want to permanently remove an environment and delete all the data
 associated with it:
 
-    $ conda env remove --name my_environment --all
+    $ conda env remove --name my_environment 
 
 For extensive documentation on using environments, please see
 [the conda documentation](https://conda.io/docs/using/envs.html). The most
@@ -147,43 +142,224 @@ an alias to do this for you:
 
     $ pip install git+https://github.com/<user>/<package-name>.git
 
-## WU! MORE on Jupyter Notebooks
+## LEAP Pangeo Python Environment
 
-1. With your Conda environment activated and Jupyter session launched (see above), create a directory to store our work. Let's call it `pythia-foundations`.
+The environment on our cloud JupyterHub is a highly curated combination of packages
+maintained by the [Pangeo Project](http://pangeo.io/).
+Then environment lives at <https://github.com/pangeo-data/pangeo-docker-images/>.
+In addition to just specifying a combination of packages, this repo automatically
+builds [Docker containers](https://docs.docker.com/get-started/).
 
-   You can do this in the GUI left sidebar by clicking the new-folder icon. If you prefer to use the command line, you can access a terminal by clicking the icon under the "Other" heading in the Launcher.
+The latest Pangeo notebook environment lives at <https://github.com/pangeo-data/pangeo-docker-images/blob/master/pangeo-notebook/environment.yml>.
+Below are the contents of that file as of 2024-09-06.
+Copy and paste the following ``environment.yml`` file somewhere
+on your local hard drive:
 
-2. Create a new `mysci.ipynb` file within the `pythia-foundations` folder:
+name: pangeo
+channels:
+ - conda-forge
+ - nodefaults
+dependencies:
+ - adlfs
+ - argopy
+ - awscli
+ - black
+ - boto3
+ - bottleneck
+ - cartopy
+ - cdsapi
+ - cfgrib
+ - cf_xarray
+ - ciso
+ - cmocean
+ - contextily
+ - dask-geopandas
+ - dask-ml
+ - datashader
+ - descartes
+ - earthaccess
+ - eofs
+ - erddapy
+ - esmpy
+ - fastjmd95
+ - flox
+ - fsspec
+ - gcm_filters
+ - gcsfs
+ - gh
+ - gh-scoped-creds
+ - geocube
+ - geopandas
+ - geopy
+ - geoviews-core
+ - git-lfs
+ - gsw
+ - h5netcdf
+ - h5py
+ - holoviews
+ - hvplot
+ - intake
+ - intake-esm
+ - intake-geopandas
+ - intake-stac
+ - intake-xarray
+ - ipdb
+ - ipykernel
+ - ipyleaflet
+ - ipympl
+ - ipytree
+ - ipywidgets
+ - jupyterlab_code_formatter
+ - jupyterlab-git
+ - jupyterlab-lsp
+ - jupyterlab-myst
+ - jupyter-panel-proxy
+ - jupyter-resource-usage
+ - kerchunk
+ - line_profiler
+ - lonboard
+ - lxml
+ - lz4
+ - matplotlib-base
+ - memory_profiler
+ - metpy
+ - nb_conda_kernels
+ - nbstripout
+ - nc-time-axis
+ - netcdf4
+ - numbagg
+ - numcodecs
+ - numpy
+ - numpy_groupies
+ - odc-stac
+ - pandas
+ - panel
+ - parcels
+ - param
+ - planetary-computer
+ - pop-tools
+ - pyarrow
+ - pycamhd
+ - pydap
+ - pystac
+ - pystac-client
+ - python-blosc
+ - python-gist
+ - python-graphviz
+ - python-lsp-ruff
+ - python-xxhash
+ - rasterio
+ - rechunker
+ - rio-cogeo
+ - rioxarray
+ - ruff
+ - s3fs
+ - satpy
+ - scikit-image
+ - scikit-learn
+ - scipy
+ - seaborn
+ - sparse
+ - snakeviz
+ - stackstac
+ - tiledb-py
+ - timezonefinder
+ - watermark
+ - xarray
+ - xarrayutils
+ - xarray-datatree
+ - xarray_leaflet
+ - xarray-spatial
+ - xbatcher
+ # https://github.com/conda-forge/xcape-feedstock/pull/22
+ #- xcape
+ - xclim
+ - xesmf
+ - xgboost
+ - xgcm
+ - xhistogram
+ - xmip
+ - xmitgcm
+ - xpublish
+ - xrft
+ - xskillscore
+ - xxhash
+ - xvec
+ - zarr
 
-   Do this in the GUI on the left sidebar by clicking the "+" icon.
+Create this environment using mamba
 
-   This will open a new launcher window where you can select a Python kernel under the "Notebooks" heading for your project. _You should see "Python 3" as in the screenshot above._ Depending on the details of your system, you might see some additional buttons with different kernels.
+    $ conda env create -f environment.yml
 
-   Selecting a kernel will open a Jupyter notebook instance and add an untitled file to the left sidebar navigator, which you can then rename to `mysci.ipynb`.
+Activate this environment
 
-   Select "Python 3" to use the Python version you just installed in the `pythia_foundations_env` conda environment.
+    $ conda activate pangeo
+
+This environment should be sufficient for all of your work in this class.
+
+## Running Python on LEAP Pangeo JupyterHub 
+
+1. When you open your [hub](https://leap.2i2c.cloud/), you can see a “File Browser” on the left sidebar and a Launcher with Notebook, Console, and Other on the right sidebar. 
+
+![Jupyter GUI](images/jupyter_gui.png)
+
+You can create a directory to store our work. Let's call it `work` (or whatever you want to call it). 
+
+You can do this in the GUI left sidebar by clicking the new-folder icon. If you prefer to use the command line, you can access a terminal by clicking the icon under the "Other" heading in the Launcher.
+
+2. Create a new `mysci.ipynb` file within the `work` folder:
+
+Do this in the GUI on the left sidebar by clicking the "+" icon.
+
+This will open a new launcher window where you can select a Python kernel under the "Notebooks" heading for your project. _You should see "Python 3" as in the screenshot above._ Depending on the details of your system, you might see some additional buttons with different kernels.
+
+Selecting a kernel will open a Jupyter notebook instance and add an untitled file to the left sidebar navigator, which you can then rename to `mysci.ipynb`.
 
 3. Change the first notebook cell to include the classic first command: printing, "Hello, world!".
 
    ```python
    print("Hello, world!")
    ```
-
+   
 4. Run your cell with {kbd}`Shift`\+{kbd}`Enter` and see that the results are printed below the cell.
 
-5. Saving your notebook and exiting
+5. Saving your notebook and exiting.
 
    When you are done with your work, it is time to save and exit.
 
-   To save your file, you can click the disc icon in the upper left Jupyter toolbar or use keyboard shortcuts.
+   To save your file, you can click the "File" in the upper left Jupyter toolbar and "Save" or use keyboard shortcuts.
 
-   Jupyter allows you to close the browser tab without shutting down the server. When you're done working on your notebook, _it's important to **click the "Shutdown" button** on the dashboard_ to free up memory, especially on a shared system.
+   Jupyter allows you to close the browser tab without shutting down the server. When you're done working on your notebook, it's important to shutdown the server to free up memory, especially on a shared system. You can do this by clicking "Hub Control Panel" under "File" and then "Stop My Server".
 
-   Then you can quit Jupyter by:
+   Then you can quit Jupyter by clicking "Log Out" under "File".
 
-   - clicking the "Quit" button on the top right, or
-   - typing `exit` into the terminal
+6. Now you can log back onto hub and download the course materials. In the terminal you can do this by -
 
-Alternatively you can simultaneously shutdown and exit the Jupyter session by typing
-{kbd}`Ctrl`\+{kbd}`C` in the terminal and confirming that you do want to
-"shutdown this notebook server."
+   $ git clone https://github.com/yutianwuldeo/GR6901.git
+
+## More on Jupyter 
+
+Project Jupyter is a project and community whose goal is to “develop open-source software, open-standards, and services for interactive computing across dozens of programming languages”. Jupyter consists of four main components: Jupyter Notebooks, Jupyter Kernels, Jupyter Lab, and Jupyter Hub. Jupyter can be executed locally and remotely.
+
+### Jupyter Notebooks
+
+The Jupyter Notebook software is an open-source web application that allows you to create and share Jupyter Notebooks (*.ipynb files). Jupyter Notebooks contain executable code, LaTeX equations, visualizations (e.g., plots, pictures), and narrative text. The code does not have to just be Python, other languages such as Julia or R are supported as well.
+
+Jupyter Notebooks are celebrated for their interactive output that allows movement between code, code output, explanations, and more code - similar to how scientists think and solve problems. Jupyter Notebooks can be thought of as a living, runnable publication and make for a great presentation platform.
+
+### Jupyter Kernels
+
+Software engines and their environments (e.g., conda environments) that execute the code contained in Jupyter Notebooks.
+
+### Jupyter Lab
+
+A popular web application on which users can create and write their Jupyter Notebooks, as well as explore data, install software, etc.
+
+### Jupyter Hub
+
+A web-based platform that authenticates users and launches Jupyter Lab applications for users on remote systems.
+
+## Summary 
+
+...
+
