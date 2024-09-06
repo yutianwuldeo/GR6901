@@ -303,27 +303,27 @@ If you are interested, you can [speed things up with Mamba](https://earth-env-da
 
 ![Jupyter GUI](images/jupyter_gui.png)
 
-You can create a directory to store our work. Let's call it `work` (or whatever you want to call it). 
-
-You can do this in the GUI left sidebar by clicking the new-folder icon. If you prefer to use the command line, you can access a terminal by clicking the icon under the "Other" heading in the Launcher.
+   You can create a directory to store our work. Let's call it `work` (or whatever you want to call it). 
+   
+   You can do this in the GUI left sidebar by clicking the new-folder icon. If you prefer to use the command line, you can access a terminal by clicking the icon under the "Other" heading in the Launcher.
 
 2. Create a new `mysci.ipynb` file within the `work` folder:
 
-Do this in the GUI on the left sidebar by clicking the "+" icon.
+   Do this in the GUI on the left sidebar by clicking the "+" icon.
 
-This will open a new launcher window where you can select a Python kernel under the "Notebooks" heading for your project. _You should see "Python 3" as in the screenshot above._ Depending on the details of your system, you might see some additional buttons with different kernels.
+   This will open a new launcher window where you can select a Python kernel under the "Notebooks" heading for your project. _You should see "Python 3" as in the screenshot above._ Depending on the details of your system, you might see some additional buttons with different kernels.
 
-Selecting a kernel will open a Jupyter notebook instance and add an untitled file to the left sidebar navigator, which you can then rename to `mysci.ipynb`.
+   Selecting a kernel will open a Jupyter notebook instance and add an untitled file to the left sidebar navigator, which you can then rename to `mysci.ipynb`.
 
-3. Change the first notebook cell to include the classic first command: printing, "Hello, world!".
+4. Change the first notebook cell to include the classic first command: printing, "Hello, world!".
 
    ```python
    print("Hello, world!")
    ```
    
-4. Run your cell with {kbd}`Shift`\+{kbd}`Enter` and see that the results are printed below the cell.
+5. Run your cell with `Shift`+`Enter` and see that the results are printed below the cell.
 
-5. Saving your notebook and exiting.
+6. Saving your notebook and exiting.
 
    When you are done with your work, it is time to save and exit.
 
@@ -333,33 +333,30 @@ Selecting a kernel will open a Jupyter notebook instance and add an untitled fil
 
    Then you can quit Jupyter by clicking "Log Out" under "File".
 
-6. Now you can log back onto hub and download the course materials. In the terminal you can do this by -
+7. Now you can log back onto hub and download the course materials. In the terminal you can do this by -
 
-   $ git clone https://github.com/yutianwuldeo/GR6901.git
+~~~
+    $ git clone https://github.com/yutianwuldeo/GR6901.git
+~~~
 
 ## More on Jupyter 
 
 Project Jupyter is a project and community whose goal is to “develop open-source software, open-standards, and services for interactive computing across dozens of programming languages”. Jupyter consists of four main components: Jupyter Notebooks, Jupyter Kernels, Jupyter Lab, and Jupyter Hub. Jupyter can be executed locally and remotely.
 
-### Jupyter Notebooks
+**Jupyter Notebooks**
 
 The Jupyter Notebook software is an open-source web application that allows you to create and share Jupyter Notebooks (*.ipynb files). Jupyter Notebooks contain executable code, LaTeX equations, visualizations (e.g., plots, pictures), and narrative text. The code does not have to just be Python, other languages such as Julia or R are supported as well.
 
 Jupyter Notebooks are celebrated for their interactive output that allows movement between code, code output, explanations, and more code - similar to how scientists think and solve problems. Jupyter Notebooks can be thought of as a living, runnable publication and make for a great presentation platform.
 
-### Jupyter Kernels
+**Jupyter Kernels**
 
 Software engines and their environments (e.g., conda environments) that execute the code contained in Jupyter Notebooks.
 
-### Jupyter Lab
+**Jupyter Lab**
 
 A popular web application on which users can create and write their Jupyter Notebooks, as well as explore data, install software, etc.
 
-### Jupyter Hub
+**Jupyter Hub**
 
 A web-based platform that authenticates users and launches Jupyter Lab applications for users on remote systems.
-
-## Summary 
-
-...
-
