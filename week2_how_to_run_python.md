@@ -25,13 +25,13 @@ In general, it is always best to test your programs in the same environment in w
 
 For learners who are familiar with basic [Linux commands](https://cheatography.com/davechild/cheat-sheets/linux-command-line/) and text editors (such as Vim or Nano), running Python in the terminal is the quickest route straight to learning Python syntax without the covering the bells and whistles of a new platform. If you are running Python on a supercomputer, through an HTTP request or SSH tunneling, you might want to consider learning in the terminal.
 
-[How to Run Python in the Terminal](terminal.md)
+[How to Run Python in the Terminal](https://foundations.projectpythia.org/foundations/terminal.html)
 
 ### Jupyter Notebooks
 
 We highly encourage the use of Jupyter notebooks: a free, open-source, interactive tool running inside a web browser that allows you to run Python code in "cells." This means that your workflow can alternate between code, output, and even Markdown-formatted explanatory sections that create an easy-to-follow analysis or "computational narrative" from start to finish. Jupyter notebooks are a great option for presentations or learning tools. For these reasons, Jupyter is very popular among scientists. Most lessons in this book will be taught via Jupyter notebooks.
 
-*MORE ON LEAP-Pangeo JupyterHub*
+*More on Running Python on LEAP Pangeo JupyterHub later*
 
 ### Other IDEs
 
@@ -39,7 +39,7 @@ If you code in other languages, you might already have a favorite IDE that will 
 
 ## Installing and managing Python with Conda
 
-*This is the general guidnace for installing and managing Python with Conda. With the LEAP Pangeo JupyterHub, a set of packages has already been installed and is good to use. More on the LEAP Pangeo ...*
+*This is the general guidance for installing and managing Python with Conda. With the LEAP Pangeo JupyterHub, a set of packages has already been installed and is good to use. More on LEAP Pangeo Python Environment later.*
 
 Conda is an open-source, cross-platform, language-agnostic package manager and environment management system that allows you to quickly install, run, and update packages within your work environment(s). Conda is a vital component of the Python ecosystem. Understanding it is important, regardless of the platform you chose to run your Python code.
 
@@ -271,8 +271,6 @@ dependencies:
  - xarray_leaflet
  - xarray-spatial
  - xbatcher
- # https://github.com/conda-forge/xcape-feedstock/pull/22
- #- xcape
  - xclim
  - xesmf
  - xgboost
@@ -287,7 +285,7 @@ dependencies:
  - xvec
  - zarr
 
-Create this environment using mamba
+Create this environment using conda
 
     $ conda env create -f environment.yml
 
@@ -296,6 +294,8 @@ Activate this environment
     $ conda activate pangeo
 
 This environment should be sufficient for all of your work in this class.
+
+If you are interested, you can [speed things up with Mamba](https://earth-env-data-science.github.io/lectures/environment/python_environments.html#speeding-things-up-with-mamba).
 
 ## Running Python on LEAP Pangeo JupyterHub 
 
