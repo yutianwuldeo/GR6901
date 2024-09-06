@@ -299,13 +299,13 @@ If you are interested, you can [speed things up with Mamba](https://earth-env-da
 
 ## Running Python on LEAP Pangeo JupyterHub 
 
-1. When you open your [hub](https://leap.2i2c.cloud/), you can see a “File Browser” on the left sidebar and a Launcher with Notebook, Console, and Other on the right sidebar. 
-
-![Jupyter GUI](images/jupyter_gui.png)
+1. When you open your [hub](https://leap.2i2c.cloud/), you can see a “File Browser” on the left sidebar and a Launcher with Notebook, Console, and Other on the right sidebar.
 
    You can create a directory to store our work. Let's call it `work` (or whatever you want to call it). 
    
    You can do this in the GUI left sidebar by clicking the new-folder icon. If you prefer to use the command line, you can access a terminal by clicking the icon under the "Other" heading in the Launcher.
+
+![Jupyter GUI](images/jupyter_gui.png)
 
 2. Create a new `mysci.ipynb` file within the `work` folder:
 
@@ -323,7 +323,7 @@ If you are interested, you can [speed things up with Mamba](https://earth-env-da
    
 5. Run your cell with `Shift`+`Enter` and see that the results are printed below the cell.
 
-6. Saving your notebook and exiting.
+6. Save your notebook and exit.
 
    When you are done with your work, it is time to save and exit.
 
