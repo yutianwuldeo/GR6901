@@ -56,20 +56,11 @@ which is the **home directory** of the user named `jovyan`.
 
 ~~~
 $ pwd
-~~~
-
-
-~~~
 /home/jovyan
 ~~~
 
-
 To understand what a "home directory" is,
-let's have a look at how the file system as a whole is organized.  For the
-sake of this example, we'll be
-illustrating the filesystem on our scientist Nelle's computer.  After this
-illustration, you'll be learning commands to explore your own filesystem,
-which will be constructed in a similar way, but not be exactly identical.  
+let's have a look at how the file system as a whole is organized.
 
 On a Unix computer, the filesystem looks like something this:
 
@@ -94,8 +85,6 @@ which stands for "listing":
 ~~~
 $ ls
 ~~~
-
-
 ~~~
 GR6901  GR6901backup0827  data  examples  github-sandbox  shared
 ~~~
@@ -109,7 +98,6 @@ which tells `ls` to add a trailing `/` to the names of directories:
 ~~~
 $ ls -F
 ~~~
-
 ~~~
 GR6901/  GR6901backup0827/  data/  examples/  github-sandbox/  shared/
 ~~~
@@ -119,7 +107,6 @@ Special directory .. doesn’t usually show up when we run `ls`. If we want to d
 ~~~
 $ ls -F -a
 ~~~
-
 ~~~
 ./             .cache/   .gitconfig           .jupyter/  .ssh/                GR6901/            examples/
 ../            .config/  .ipynb_checkpoints/  .lesshst   .viminfo             GR6901backup0827/  github-sandbox/
@@ -154,7 +141,6 @@ look at our `github-sandbox` directory by running `ls -F github-sandbox`:
 ~~~
 $ ls -F github-sandbox
 ~~~
-
 ~~~
 LICENSE  README.md  sample.md  sample.py  sample.txt
 ~~~
@@ -191,9 +177,6 @@ if we run `pwd` after running `cd ..`, we're back in `/home/jovyan`:
 
 ~~~
 $ pwd
-~~~
-
-~~~
 /home/jovyan
 ~~~
 
@@ -211,7 +194,6 @@ How can you check what happened?  `pwd` gives us the answer!
 ~~~   
 $ pwd
 ~~~
-
 ~~~
 /home/jovyan
 ~~~
@@ -260,7 +242,6 @@ the new directory is created in the current working directory:
 ~~~
 $ ls -F
 ~~~
-
 ~~~
 GR6901/  GR6901backup0827/  data/  examples/  github-sandbox/  shared/  thesis/
 ~~~
@@ -293,7 +274,7 @@ When we first open a document, we always start in normal mode, in which we can e
 
 Let's type in a few lines of text.
 
-Once we're happy with our text, to exit insert mode, press the `Esc` key. We can save a file that is currently open by entering the `:w` command. We can then quit an open file by entering the `:q` command. If you have made any edits without saving, you will see an error message. If you wish to quit without saving the edits, use `:q!`.
+Once we're happy with our text, to exit insert mode, press the `Esc` key. We can save a file that is currently open by entering the `:w` command. We can then quit an open file by entering the `:q` command. Save and Quit at the same time by combining the commands: `:wq`. If you have made any edits without saving, you will see an error message. If you wish to quit without saving the edits, use `:q!`.
 
 More on `vim` can be found [here](https://cvw.cac.cornell.edu/linux/text-editors/vim) for instance.
 
@@ -438,14 +419,11 @@ Sure enough,
 
 ~~~
 $ ls thesis
-~~~
-
-~~~
 quotes.txt
 ~~~
 
 One has to be careful when specifying the target file name, since `mv` will
-silently overwrite any existing file with the same name, which could
+silently *overwrite* any existing file with the same name, which could
 lead to data loss. An additional flag, `mv -i` (or `mv --interactive`),
 can be used to make `mv` ask you for confirmation before overwriting.
 
@@ -478,9 +456,6 @@ We can use this to see that `quotes.txt` is still in our current directory:
 
 ~~~
 $ ls quotes.txt
-~~~
-
-~~~
 quotes.txt
 ~~~
 
