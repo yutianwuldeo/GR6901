@@ -72,18 +72,13 @@ To see all the environments on your system:
 
     $ conda info --envs
 
-If you want to permanently remove an environment and delete all the data
-associated with it:
-
-    $ conda env remove --name my_environment 
-
 For extensive documentation on using environments, please see
 [the conda documentation](https://conda.io/docs/using/envs.html). The most
 important feature to review here is the ability to *share and export* your
 environment; this is the basis for reproducibility in the scientific Python stack.
 At any time from the shell, you can execute
 
-    $ conda list
+    $ conda list --name my_environment
 
 to get a complete summary of all the packages installed in your environment, the
 channel they were installed from, and their full version info. Using this info,
@@ -96,6 +91,11 @@ configuration can be installed by executing
     $ conda env create -f my_environment.yml
 
 Below we will see an example of an environment file.
+
+If you want to permanently remove an environment and delete all the data
+associated with it:
+
+    $ conda env remove --name my_environment 
 
 ## Installing More Packages
 
@@ -155,135 +155,135 @@ Below are the contents of that file as of 2024-09-06.
 Copy and paste the following ``environment.yml`` file somewhere
 on your local hard drive:
 
-name: pangeo
-channels:
- - conda-forge
- - nodefaults
-dependencies:
- - adlfs
- - argopy
- - awscli
- - black
- - boto3
- - bottleneck
- - cartopy
- - cdsapi
- - cfgrib
- - cf_xarray
- - ciso
- - cmocean
- - contextily
- - dask-geopandas
- - dask-ml
- - datashader
- - descartes
- - earthaccess
- - eofs
- - erddapy
- - esmpy
- - fastjmd95
- - flox
- - fsspec
- - gcm_filters
- - gcsfs
- - gh
- - gh-scoped-creds
- - geocube
- - geopandas
- - geopy
- - geoviews-core
- - git-lfs
- - gsw
- - h5netcdf
- - h5py
- - holoviews
- - hvplot
- - intake
- - intake-esm
- - intake-geopandas
- - intake-stac
- - intake-xarray
- - ipdb
- - ipykernel
- - ipyleaflet
- - ipympl
- - ipytree
- - ipywidgets
- - jupyterlab_code_formatter
- - jupyterlab-git
- - jupyterlab-lsp
- - jupyterlab-myst
- - jupyter-panel-proxy
- - jupyter-resource-usage
- - kerchunk
- - line_profiler
- - lonboard
- - lxml
- - lz4
- - matplotlib-base
- - memory_profiler
- - metpy
- - nb_conda_kernels
- - nbstripout
- - nc-time-axis
- - netcdf4
- - numbagg
- - numcodecs
- - numpy
- - numpy_groupies
- - odc-stac
- - pandas
- - panel
- - parcels
- - param
- - planetary-computer
- - pop-tools
- - pyarrow
- - pycamhd
- - pydap
- - pystac
- - pystac-client
- - python-blosc
- - python-gist
- - python-graphviz
- - python-lsp-ruff
- - python-xxhash
- - rasterio
- - rechunker
- - rio-cogeo
- - rioxarray
- - ruff
- - s3fs
- - satpy
- - scikit-image
- - scikit-learn
- - scipy
- - seaborn
- - sparse
- - snakeviz
- - stackstac
- - tiledb-py
- - timezonefinder
- - watermark
- - xarray
- - xarrayutils
- - xarray-datatree
- - xarray_leaflet
- - xarray-spatial
- - xbatcher
- - xclim
- - xesmf
- - xgboost
- - xgcm
- - xhistogram
- - xmip
- - xmitgcm
- - xpublish
- - xrft
- - xskillscore
- - xxhash
- - xvec
- - zarr
+    name: pangeo
+    channels:
+    - conda-forge
+    - nodefaults
+    dependencies:
+    - adlfs
+    - argopy
+    - awscli
+    - black
+    - boto3
+    - bottleneck
+    - cartopy
+    - cdsapi
+    - cfgrib
+    - cf_xarray
+    - ciso
+    - cmocean
+    - contextily
+    - dask-geopandas
+    - dask-ml
+    - datashader
+    - descartes
+    - earthaccess
+    - eofs
+    - erddapy
+    - esmpy
+    - fastjmd95
+    - flox
+    - fsspec
+    - gcm_filters
+    - gcsfs
+    - gh
+    - gh-scoped-creds
+    - geocube
+    - geopandas
+    - geopy
+    - geoviews-core
+    - git-lfs
+    - gsw
+    - h5netcdf
+    - h5py
+    - holoviews
+    - hvplot
+    - intake
+    - intake-esm
+    - intake-geopandas
+    - intake-stac
+    - intake-xarray
+    - ipdb
+    - ipykernel
+    - ipyleaflet
+    - ipympl
+    - ipytree
+    - ipywidgets
+    - jupyterlab_code_formatter
+    - jupyterlab-git
+    - jupyterlab-lsp
+    - jupyterlab-myst
+    - jupyter-panel-proxy
+    - jupyter-resource-usage
+    - kerchunk
+    - line_profiler
+    - lonboard
+    - lxml
+    - lz4
+    - matplotlib-base
+    - memory_profiler
+    - metpy
+    - nb_conda_kernels
+    - nbstripout
+    - nc-time-axis
+    - netcdf4
+    - numbagg
+    - numcodecs
+    - numpy
+    - numpy_groupies
+    - odc-stac
+    - pandas
+    - panel
+    - parcels
+    - param
+    - planetary-computer
+    - pop-tools
+    - pyarrow
+    - pycamhd
+    - pydap
+    - pystac
+    - pystac-client
+    - python-blosc
+    - python-gist
+    - python-graphviz
+    - python-lsp-ruff
+    - python-xxhash
+    - rasterio
+    - rechunker
+    - rio-cogeo
+    - rioxarray
+    - ruff
+    - s3fs
+    - satpy
+    - scikit-image
+    - scikit-learn
+    - scipy
+    - seaborn
+    - sparse
+    - snakeviz
+    - stackstac
+    - tiledb-py
+    - timezonefinder
+    - watermark
+    - xarray
+    - xarrayutils
+    - xarray-datatree
+    - xarray_leaflet
+    - xarray-spatial
+    - xbatcher
+    - xclim
+    - xesmf
+    - xgboost
+    - xgcm
+    - xhistogram
+    - xmip
+    - xmitgcm
+    - xpublish
+    - xrft
+    - xskillscore
+    - xxhash
+    - xvec
+    - zarr
 
 Create this environment using conda
 
@@ -338,6 +338,8 @@ If you are interested, you can [speed things up with Mamba](https://earth-env-da
 ~~~
     $ git clone https://github.com/yutianwuldeo/GR6901.git
 ~~~
+
+   More on `git` commands later.
 
 ## More on Jupyter 
 
