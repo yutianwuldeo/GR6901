@@ -84,9 +84,6 @@ the various repos is shown in the image below.
 
 ![GitHub repositories](images/github-repos.png)
 
-
-
-
 ## GitHub Workflows
 
 GitHub, together with Git, are powerful tools for managing and
@@ -105,75 +102,29 @@ A typical sequence of workflow steps consists of the following:
 1. The contributor creates a new branch in their local repository
 1. The contributor makes changes to the branch and commits them to
    their local repository
-1. The contributor _pushes_ the branch to a remote repository
-1. The contributor submits a PR via GitHub
+1. The contributor pushes the branch to a remote repository
+1. The contributor submits a Pull Request via GitHub
 
 The sequence of steps
 outlined above provides a general framework for submitting a PR.
 But the precise set of steps is highly dependent on the choice of
-workflow for a given project. In this chapter we describe Pull
-Requests for two commonly used workflows: The **Git Feature Branch
+workflow for a given project. Typically there are two commonly used workflows: The **Git Feature Branch
 Workflow** and the **Forking Workflow**. The former is simpler and often
 used by teams when everyone on the team is an authorized contributor
 to the destination repository. I.e. all of the contributors have
 write access to the remote repository hosted by GitHub. The latter
 is typically what is needed to contribute to external projects for
 which the contributor is not authorized (i.e. does not have write
-access) to make changes to the destination repository. We briefly
-describe both workflows below, and include the steps necessary to
-make a PR on each.
+access) to make changes to the destination repository. 
 
-## Git Feature Branch Workflow
+We describe the Forking Workflow and include the steps necessary to
+make a PR.
 
-The **Git Feature Branch Workflow** is one of the simplest and oldest
-collaborative workflows that is used for small team projects. The
-key idea behind this workflow, which is also common to the **Forking
-Workflow**, is that all development (all changes) should take place
-on a dedicated Git _feature_ branch, not the _main_ (historically
-referred to as _master_) branch. The motivation behind this is that
-one or more developers can iterate over a feature branch without
-disturbing the contents of the main branch. Consider using the **Git
-Feature Branch Workflow** for GitHub’s most widely used purpose,
-software development. Software modifications are liable to introduce
-bugs. Isolating them to a dedicated branch until they can be fixed
-ensures that a known, or official, version of the software is always
-available and in working order.
+## Forking Workflow
 
-```{note}
-Avoiding making edits directly on the `main` branch is considered best practice for most workflows and projects!
-```
+The key idea behind both workflows (i.e. **Git Feature Branch Workflow** and **Forking Workflow**) is that all development (all changes) should take place on a dedicated Git _feature_ branch, not the _main_ (historically referred to as _master_) branch. The motivation behind this is that one or more developers can iterate over a feature branch without disturbing the contents of the main branch. Avoiding making edits directly on the `main` branch is considered best practice for most workflows and projects!
 
-Working with the Git Feature Branch Workflow
-
-This model assumes a single, remote GitHub repository with a branch
-named `main`, that contains the official version of all of the digital
-assets, along with a history of all of the changes made. When a
-contributor wishes to make changes to the remote repository, they
-clone the repo and create a descriptively named feature branch,
-such as `my-new-feature` or perhaps `issue-nnn`, where `nnn` is the
-number of an issue opened on the repository that this new feature
-branch will address. Changes by the contributor are then made to
-the feature branch in a local copy of the repository. When ready,
-the new branch is pushed to the remote repository.
-
-At this point,
-the new branch can be viewed, discussed, and even changed by
-contributors with write access to the remote repository. When the
-author of the feature branch thinks the changes are ready to be
-merged into `main` on the remote repository, they create a PR. The
-PR signals the project maintainers that the contributor would like
-to merge their feature branch into `main`, and invites review of the
-changes made in the branch. GitHub simplifies the process of viewing
-the changes by offering a variety of ways to see context differences
-(diffs) between `main` and the feature branch. Discussion between
-the reviewers and the contributor inside a PR discussion forum
-occurs in the same way that discussion over GitHub [Issues](github-issues) takes
-place inside a discussion forum associated with a particular issue.
-If additional changes are requested by the reviewers, these can be
-made by the contributor in their local repository, committed, and
-then pushed to the remote using the same processes they used with
-the initial push. Once reviewers are satisfied with the changes, a
-project maintainer can merge the feature branch with `main`.
+**branches**
 
 First of all, set up your username and email:
 
@@ -182,12 +133,23 @@ git config --global user.name "Yutian Wu"
 git config --global user.email "yutianwu@ldeo.columbia.edu"
 ~~~
 
+### Forking the remote repository
+
+In a fork, you create a copy of an existing repository, but store it in your own personal GitHub organization (recall that when you create a GitHub account, the _organization_ name is your GitHub user ID).
+
+As an example, we intend to make some changes to the [Project Pythia Sandbox](https://github.com/ProjectPythia/github-sandbox) repo, that ultimately we'll submit to the original repository as a _Pull request_.
+
+Notice at the top right of the screen, there is a _Fork_ button.
+
+Click on it and create a new fork in your personal GitHub organization.
+
+You now have a copy (essentially a clone) of the forked repository, which is now owned by you.
+
+You could, at this point, select one of the files in the repository and use GitHub's built-in editor to make changes to these text-based files. However, the typical use case that leverages the collaborative power of GitHub and its command-line cousin, _git_, involves _cloning_ your _forked_ copy of the repo to your local computer, where you can then perform your edits, and (in the case of software) test them on your system.
+
 ### Cloning the remote repository
 
-If you don’t have a local copy of the remote repository, you’ll want
-to create one by [cloning the
-remote](github-cloning-forking)
-to your local computer. This can be done with the git command line
+Cloning a remote repository can be done with the `git` command line
 tools and the general form of the command looks like this:
 
 ~~~
@@ -202,10 +164,8 @@ local directory for you. If you don’t know the URL for your
 repository, navigate your web browser to your GitHub repository,
 and click on the `Code` button. The URL will be displayed.
 
-For example, let's clone the [Project Pythia sandbox repository](https://github.com/ProjectPythia/github-sandbox):
-
 ~~~
-git clone https://github.com/ProjectPythia/github-sandbox.git
+git clone https://github.com/yutianwuldeo/github-sandbox.git
 ~~~
 
 Note, we did not specify a `local-directory_name` here, so git will
@@ -230,29 +190,36 @@ Already on 'main'
 Already up to date.
 ~~~
 
+You can verify the branch by:
+
+~~~
+git branch
+~~~
+
 Now inspect this repository with 
 
 ~~~
 git status
 ~~~
-which will always give you information about the current git repo. Try it! You should see something like this:
 
-.... TO ADD ...
+which will always give you information about the current git repo. Try it! 
 
 ### Create a new branch
 
 You may have noticed that the file `sample.txt` in the `github-sandbox` repository contains a typo. Here we're going to fix the error and save it locally.
 
-Before we start editing files, the first thing to do is to _create a new branch_ where we can safely make any changes we want.
-
-```{tip}
-While there's nothing stopping us from making changes directly to the `main` branch, it's often best to avoid this! The reason is that it makes collaboration trickier. See the [lesson on Pull Requests](github-pull-request).
-```
+Before we start editing files, the first thing to do is to _create a new branch_ where we can safely make any changes we want. While there's nothing stopping us from making changes directly to the `main` branch, it's often best to avoid this! The reason is that it makes collaboration trickier. 
 
 Let's create and checkout a new branch in one line:
 
 ~~~
 git checkout -b fix-typo
+~~~
+
+You can verify the branch by:
+
+~~~
+git branch
 ~~~
 
 Now try your new best friend again:
@@ -297,7 +264,7 @@ Of course we know what changed in that file because we just finished editing it.
 git diff
 ~~~
 
-which should show you something like this:
+which, by default, compares files between current version and last commit, and should show you something like this:
 
 ~~~
 diff --git a/sample.txt b/sample.txt
@@ -319,6 +286,8 @@ We can see here that `git diff` finds the line(s) where our current file differs
 The next step is to add our changes to the "official" history of our repo. This is a two-step process (staging and committing).
 
 #### Staging
+
+![GitHub repositories](images/git_image.png)
 
 Before we make a commit, we must first stage our changes. Think of staging simply as "getting ready to commit". The two-step process can help avoid accidentally committing something that wasn't ready.
 
@@ -351,9 +320,7 @@ It's time to make a commitment. We can now permanently add our edit to the histo
 git commit -m 'Fix the typo'
 ~~~
 
-```{note}
 Every commit should have a "message" that explains briefly what the commit is for. Here we set the commit message with the `-m` flag and chose some descriptive text. Note, it's critical to have those quotes around `'Fix the typo'`. Otherwise the command shell will misinterpret what you are trying to do.
-```
 
 Now when we do `git status` we see
 
@@ -368,8 +335,6 @@ And we're back to a clean state! We have now added a new permanent change to the
 
 Each commit is essentially a snapshot in time of the state of the repo. So how can we look back on that history, or revert back to a previous version of a file?
 
-*Viewing the commit history with `git log`*
-
 A simple way to see this history of the current branch is this:
 
 ~~~
@@ -379,38 +344,49 @@ git log
 You'll see something like this:
 
 ~~~
-commit 7dca0292467e4bbd73643556f83fd1c52b5c113c (HEAD -> fix-typo)
-Author: Brian Rose <brose@albany.edu>
-Date:   Mon Jan 17 11:31:49 2022 -0500
+commit b880aadaf75fca8adc7c6a858c3dfeefa23a1351 (HEAD -> fix-typo)
+Author: Yutian Wu <yutianwu@ldeo.columbia.edu>
+Date:   Thu Sep 12 14:23:29 2024 +0000
 
     Fix the typo
 
-commit 35fcbd991f911e170df550db58f74a082ba18b50 (origin/main, origin/HEAD, main)
-Author: Kevin Tyle <ktyle@albany.edu>
-Date:   Thu Jan 13 11:29:40 2022 -0500
+commit 79656ab5dc79305816404265ac870734096adbb9 (origin/main, origin/HEAD, main)
+Merge: ce9b18a 86003b3
+Author: Julia Kent <46687291+jukent@users.noreply.github.com>
+Date:   Fri Jul 28 14:55:53 2023 -0600
 
-    Close docstring quote on sample.py
+    Merge pull request #13 from jukent/jukent-patch-1
+    
+    Add actions to sandbox for warning and closing stale issues.
 
-commit e56ea58071f150ec00904a50341a672456cbcb8f
-Author: Kevin Tyle <ktyle@albany.edu>
-Date:   Tue Jan 11 14:15:31 2022 -0500
+commit 86003b3686f90e0a944d3d1382606470a529014f
+Author: Julia Kent <46687291+jukent@users.noreply.github.com>
+Date:   Thu Jul 27 14:37:25 2023 -0600
 
-    Create sample.md
+    Update .github/workflows/stale.yml
+    
+    Co-authored-by: Brian Rose <brose@albany.edu>
 
-commit f98d05e312d19a84b74c45402a2904ab94d86e45
-Author: Kevin Tyle <ktyle@albany.edu>
-Date:   Tue Jan 11 13:58:09 2022 -0500
+commit 16f11bdabc497e075efac0ba1f929f9fd164fd2d
+Author: Julia Kent <46687291+jukent@users.noreply.github.com>
+Date:   Thu Jul 27 14:07:47 2023 -0600
 
-    Create sample.py
+    Update stale.yml to rm tag
+
+commit c4d6a5055604ad669d18dc6d624e1dbfd4929f6a
+Author: Julia Kent <46687291+jukent@users.noreply.github.com>
+Date:   Thu Jul 27 14:07:06 2023 -0600
+
+    rm tag from comment.yml
+
+commit 330a26049ec403774726bd47ea70c50a2efa8d4b
+Author: Julia Kent <46687291+jukent@users.noreply.github.com>
+:
 ~~~
 
-which shows the last few commits on this branch, including the commit number, author, timestamp, and commit message. You can page down to see the rest of the history
-or just press `Q` to exit `git log`!
+which shows the last few commits on this branch, including the commit number, author, timestamp, and commit message. You can page down to see the rest of the history or just press `Q` to exit `git log`!
 
-```{note}
 Every commit has a unique hexadecimal checksum code like `7dca0292467e4bbd73643556f83fd1c52b5c113c`. Your history will look a little different from the above!
-```
-*Checking out a previous commit*
 
 Let's say you want to retrieve the file `sample.txt` from the previous commit. Two possible reasons why:
 
@@ -458,75 +434,40 @@ As the git message above is reminding us, it's possible to create an entirely ne
 git checkout fix-typo
 ~~~
 
-### Push the feature branch to the remote repository
+### Push the feature branch to the personal remote repository
 
 After running `git commit` your changes have been captured in your
 local repository. But most likely only you can see them, and if
 your local file system fails your changes may be lost. To make your
 changes visible to others, and safely stored on your remote GitHub
-repository, you need to push them. However, remember at the beginning
-of this section we said that the **Git Feature Branch Workflow** works
-when you have write access to the remote repository? Unless you are
-a member of Project Pythia you probably don't have write access to
-the `github-sandbox` remote repo. So you won't be able to push your
-changes to it. That's OK. We can still run the `push` command. It won't
-break anything. Here is the `push` command that we expect to fail:
+repository, you need to push them by using `git push origin <branch-name>`.
+
+The `git push origin <branch-name>` command transfers commits from your local repository to a remote repository. 
+
+In Git, `origin` is the default name given to the remote repository from which your local repository was cloned. You can verify `origin` by:
 
 ~~~
-git push --set-upstream origin fix-typo
+git remote show origin
 ~~~
 
-You should get a helpful error message like:
+Now you can push the `fix-typo` branch to `origin`:
 
 ~~~
-remote: Permission to ProjectPythia/github-sandbox.git denied to clyne.
-fatal: unable to access 'https://github.com/ProjectPythia/github-sandbox.git/': The requested URL returned error: 403
+git push origin fix-typo
 ~~~
 
-The use of the ‘--set-upstream’ option is a one-time operation when
-you push a new branch. Later, if you want to push subsequent changes
-to the remote you can simply do:
+In the remote repo, you can see a notification like the following - 
 
 ~~~
-git push
+fix-typo had recent pushes 23 seconds ago
 ~~~
 
-If you are feeling unsatisfied about not having `git push` succeed, there
-is a simple solution: create a GitHub repository owned by you. The
-GitHub Quickstart guide provides an excellent [tutorial](https://docs.github.com/en/get-started/quickstart/create-a-repo) on how to
-do this.
-
-### Making a Pull Request
-
-Finally, after cloning a remote repository, creating a feature
-branch, making your changes, committing them to your local repository,
-and pushing your commits back to the remote repository, you are now
-ready to issue a PR requesting that the remote repository maintainers
-review your changes for potential merger into the main branch on
-the remote. This final action must be performed from within your
-web browser. After navigating to your repo do the following:
-
-1. Click on “Pull Requests” in the top navigation bar
-1. Click on “New Pull Request”
-1. Under “Compare changes”, make sure that `base` is set to `main`, and `compare` is set to the name of your feature branch, `my-new-feature`
-1. Click on “Create Pull Request”
-1. A PR window should open up. Provide a descriptive title, and any helpful comments that you want to communicate with the reviewers
-1. Click on “Create Pull Request” in the PR window.
-
-That’s it! You’re done! Sit back and wait for comments from reviewers.
-If changes are requested, simply repeat the steps above. Once your
-PR is merged you’ll receive notification from GitHub.
-
-## Using Git / GitHub from remote JupyterHub
-
-The recommended way to move code in and out of a remote hub is via git / GitHub.
-You should clone your project repo from the terminal and use git pull / git push to update and push changes.
-In order to push data to GitHub from the hub, you will need to set up GitHub authentication.
+*In order to push data to GitHub from the hub, you will need to set up GitHub authentication.
 [gh-scoped-creds](https://github.com/yuvipanda/gh-scoped-creds/) should be already setup
 on your 2i2c managed JupyterHub, and we shall use that to authenticate to GitHub for
-push / pull access.
+push / pull access.*
 
-Open a terminal in JupyterHub, run `gh-scoped-creds` and follow the prompts.
+To do that, open a terminal in JupyterHub, run `gh-scoped-creds` and follow the prompts.
 
 Alternatively, in a notebook, run the following code and follow the prompts:
 
@@ -544,6 +485,21 @@ on the repositories you want to be able to push to from this particular JupyterH
 need to do this once per JupyterHub, and can revoke access any time. You can always provide
 access to your own personal repositories, but might need approval from admins of GitHub
 organizations if you want to push to repos in that organization.
+
+### Making a Pull Request
+
+Once the new feature branch has been pushed to the contributor’s
+personal repository, a PR can be created that asks the maintainers
+of the upstream repository to merge the contents of the feature
+branch on the contributor’s repository into the main branch on the
+upstream repository. Specifically, the steps are the following, performed on the upstream remote:
+
+1. Click on “Pull Requests” in the top navigation bar
+1. Click on “New Pull Request”
+1. Under “Compare changes”, make sure that `base` is set to `main`, and `compare` is set to the name of your feature branch, `fix-typo`
+1. Click on “Create Pull Request”
+1. A PR window should open up. Provide a descriptive title, and any helpful comments that you want to communicate with the reviewers
+1. Click on “Create Pull Request” in the PR window.
 
 ## Summary
 

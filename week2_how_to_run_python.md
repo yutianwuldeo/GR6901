@@ -41,6 +41,22 @@ If you code in other languages, you might already have a favorite IDE that will 
 
 *This is the general guidance for installing and managing Python with Conda. With the LEAP Pangeo JupyterHub, a set of packages has already been installed and is good to use. More on LEAP Pangeo Python Environment later.*
 
+The easiest way to set up a full-stack scientific Python deployment is to use a
+Python distribution. This is an installation of Python with a set of curated
+packages which are guaranteed to work together.
+For this class, we recommend the
+**[Anaconda Python Distribution](https://www.anaconda.com/download/)**.
+Follow the link above to obtain a one-click installer for Linux, Mac, or
+Windows.
+(Make sure you select the Python 3 installer, not Python 2.7.)
+In addition to the packages themselves, Anaconda includes a graphical
+utility to help manage any packages you may want to install which are not
+already included in the default inclusion list.
+
+If you set up your python environment using the Anaconda Python Distribution or
+with miniconda, you should already have the **conda** command available on
+the command line.
+
 Conda is an open-source, cross-platform, language-agnostic package manager and environment management system that allows you to quickly install, run, and update packages within your work environment(s). Conda is a vital component of the Python ecosystem. Understanding it is important, regardless of the platform you chose to run your Python code.
 
 It is strongly recommended to read official
@@ -104,9 +120,6 @@ using conda.
 Conda was created to help manage the complex dependencies and
 pre-compiled binary libraries that are necessary in scientific python.
 
-If you set up your python environment using the Anaconda Python Distribution or
-with miniconda, you should already have the **conda** command available on
-the command line.
 With it, you can easily install packages from an official, curated set of packages which are
 built and tested for a number of different system configurations on Linux,
 Windows, and macOS
@@ -119,6 +132,8 @@ community-maintained collection of packages/recipes called
 which is accessible through conda as a special "channel"
 
     $ conda install -c conda-forge <package-name>
+
+A list of packages in conda-forge can be found [here](https://conda-forge.org/packages/).
 
 While conda allows you to install almost any science-related package, there may
 be other general-use python packages you wish to you that are not available in
@@ -285,7 +300,8 @@ on your local hard drive:
     - xvec
     - zarr
 
-Create this environment using conda
+With this environment file, a new environment with the exact
+configuration can be installed in another server by executing
 
     $ conda env create -f environment.yml
 
