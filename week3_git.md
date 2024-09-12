@@ -29,6 +29,64 @@ Fortunately, in this class, we will only be using a small subset of what git can
 For a full-length tutorial, we recommend the article [Version Control with Git](http://swcarpentry.github.io/git-novice/) on Software Carpentry website.
 Here we simply enumerate the most common git commands.
 
+## GitHub
+
+### GitHub
+
+[GitHub](https://github.com) is a web-based platform for the dissemination of free and open-source software.
+
+GitHub provides the following:
+
+1. _Version control_ for free and open-source software and other digital assets
+1. Project _discussion forums_
+1. _DevOps_ to facilitate building and testing software
+1. _Bug_ reporting, patching, and tracking
+1. _Documentation_ hosting
+1. An environment that fosters _collaboration_
+
+Although GitHub can host any digital asset, the most common use case for GitHub is for individuals or organizations to house _repositories_ of _free_ and _open-source software_.
+
+You can set up a free user account on GitHub.
+
+### GitHub Repositories
+
+GitHub gives the following explanation of a [repository](https://docs.github.com/en/get-started/quickstart/hello-world):
+
+> A repository is usually used to organize a single project. Repositories can contain folders and files, images, videos, spreadsheets, and data sets -- anything your project needs. Often, repositories include a `README` file, a file with information about your project. GitHub makes it easy to add one at the same time you create your new repository. It also offers other common options such as a license file.
+
+In short, it is a _collection of files_. Each GitHub repository has an _owner_, which could be an individual or an organization. Repositories can also be set to _public_ or _private_, determining who can see and interact with it. While a repository can simply store files, GitHub is designed with **collaboration** in mind. Three key collaborative tools in GitHub are:
+
+1. **Issues**: report a bug, plan improvements, or provide feedback to others working on the repository.
+1. **Discussions**: post ideas or other conversations that are not as specific or actionable as an **Issue**.
+1. **Pull requests**: We will go into the specifics later, but a **Pull request** allows a user to _propose a change_ to any of the files within a repository.
+
+All of the Python packages covered (e.g. [Numpy](https://github.com/numpy/numpy) and [Xarray](https://github.com/pydata/xarray)) have associated GitHub repositories, as well as [Python itself](https://github.com/python/cpython).
+
+As you can see by the recent timestamps, these repositories are actively changing; this reflects the adaptability of the [open-source software](https://opensource.org/osd) ecosystem surrounding Python.
+
+Finally, we introduce an important concept that is vital to your
+understanding when working with GitHub. It is the source of GitHub's power, as well
+as much of its complexity. GitHub repositories
+are _distributed_; in the general case, there is more than one
+repository for any project. In fact, repositories can come and go
+at any time, created and deleted as need dictates. Creating new
+repositories from existing ones, synchronizing them, and managing them
+are the topics of later sections. For now, it is only important to
+understand that for a GitHub-managed project, there is typically one
+"official" repository, often called the "upstream" repository, and it lives on GitHub.com. There may be any
+number of copies of the "official" repository, known as _forks_ (or _origins_,
+if it is owned by you),
+that also reside on GitHub.com. Repos that are hosted on GitHub.com
+are referred to as _remotes_. In addition to the remotes, there may
+be one or more copies of the remotes on your desktop or laptop
+computer that are referred to as _locals_. A conceptual diagram of
+the various repos is shown in the image below.
+
+![GitHub repositories](images/github-repos.png)
+
+
+
+
 ## GitHub Workflows
 
 GitHub, together with Git, are powerful tools for managing and
@@ -491,7 +549,8 @@ organizations if you want to push to repos in that organization.
 
 - Version control is an important tool for working with code files (or anything that is saved as plain text).
 - git is the most common version control software in use today.
-- `git status` : see what branch we're on and what state our repo is in
+- `git init`: initiate a new repo
+- `git status`: see what branch we're on and what state our repo is in
 - `git log`: see the commit history of our branch
 - `git add file`: stage a file for a commit
 - `git commit -m 'message/comment'`: create a new commit with the staged files
