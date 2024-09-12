@@ -476,13 +476,27 @@ quotes.txt   thesis/quotations.txt
 
 ## Connecting to a Linux Server 
 
-We typically use `ssh` to connect to a linux server. However, because this notebook server, LEAP Pangeo, is a linux “virtual machine", we can't `ssh` in! But we can use the terminal via the JupyterLab launcher and `ssh` / `scp` / `ftp` to remote systems (if you have access to them). For example, we can `ssh` to a HPC called Derecho:
+We typically use `ssh` to enable secure logins to remote computers. However, because this notebook server, LEAP Pangeo, is a linux “virtual machine", we can't `ssh` in! But we can use the terminal via the JupyterLab launcher and `ssh` / `scp` / `ftp` to remote systems (if you have access to them). 
+
+For `ssh`, the basic syntax is:
+
+~~~
+$ ssh [username]@[hostname or IP address]
+~~~
+
+For example, we can `ssh` to a high performance computer (HPC) called Derecho (you may not be able to do this if you don't have access to Derecho):
 
 ~~~
 $ ssh yutian@derecho.hpc.ucar.edu
 ~~~
 
-We can also move a file `test.m` from Derecho to LEAP Pangeo by using `scp`:
+For `scp`, the basic syntax is:
+
+~~~
+$ scp [[user@]host1:]source_file_or_directory [[user@]host2:]destination
+~~~
+
+For example, we can copy a file `test.m` from Derecho to LEAP Pangeo by using `scp`:
 
 ~~~
 $ scp yutian@derecho.hpc.ucar.edu:/glade/u/home/yutian/scripts/ars22/test.m .
