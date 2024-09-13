@@ -117,14 +117,14 @@ is typically what is needed to contribute to external projects for
 which the contributor is not authorized (i.e. does not have write
 access) to make changes to the destination repository. 
 
-We describe the Forking Workflow and include the steps necessary to
+There are many similarities in the two workflows. We describe the **Forking Workflow** as an example and include the steps necessary to
 make a PR.
 
 ## Forking Workflow
 
 The key idea behind both workflows (i.e. **Git Feature Branch Workflow** and **Forking Workflow**) is that all development (all changes) should take place on a dedicated Git _feature_ branch, not the _main_ (historically referred to as _master_) branch. The motivation behind this is that one or more developers can iterate over a feature branch without disturbing the contents of the main branch. Avoiding making edits directly on the `main` branch is considered best practice for most workflows and projects!
 
-**branches**
+Git **branches** allow for non-linear or differing revision histories of a repository. At a point in time, you can split your repository into multiple development paths (branches) where you can make different commits in each, typically with the ultimate intention of merging these branches and development changes together at a later time. Some reasons for wanting to split your repository into multiple branches is to experiment with different methods of solving a problem (before deciding which method will ultimately be merged) and to work on different problems within the same codebase (without confusing which code changes are relevant to which problem).
 
 First of all, set up your username and email:
 
@@ -133,13 +133,13 @@ git config --global user.name "Yutian Wu"
 git config --global user.email "yutianwu@ldeo.columbia.edu"
 ~~~
 
-### Forking the remote repository
+### Fork the official upstream remote repository
 
 In a fork, you create a copy of an existing repository, but store it in your own personal GitHub organization (recall that when you create a GitHub account, the _organization_ name is your GitHub user ID).
 
 As an example, we intend to make some changes to the [Project Pythia Sandbox](https://github.com/ProjectPythia/github-sandbox) repo, that ultimately we'll submit to the original repository as a _Pull request_.
 
-Notice at the top right of the screen, there is a _Fork_ button.
+Notice at the top right of the repo, there is a _Fork_ button.
 
 Click on it and create a new fork in your personal GitHub organization.
 
@@ -147,7 +147,7 @@ You now have a copy (essentially a clone) of the forked repository, which is now
 
 You could, at this point, select one of the files in the repository and use GitHub's built-in editor to make changes to these text-based files. However, the typical use case that leverages the collaborative power of GitHub and its command-line cousin, _git_, involves _cloning_ your _forked_ copy of the repo to your local computer, where you can then perform your edits, and (in the case of software) test them on your system.
 
-### Cloning the remote repository
+### Clone the personal remote repository
 
 Cloning a remote repository can be done with the `git` command line
 tools and the general form of the command looks like this:
@@ -285,9 +285,9 @@ We can see here that `git diff` finds the line(s) where our current file differs
 
 The next step is to add our changes to the "official" history of our repo. This is a two-step process (staging and committing).
 
-#### Staging
-
 ![GitHub repositories](images/git_image.png)
+
+#### Staging
 
 Before we make a commit, we must first stage our changes. Think of staging simply as "getting ready to commit". The two-step process can help avoid accidentally committing something that wasn't ready.
 
@@ -486,10 +486,10 @@ need to do this once per JupyterHub, and can revoke access any time. You can alw
 access to your own personal repositories, but might need approval from admins of GitHub
 organizations if you want to push to repos in that organization.
 
-### Making a Pull Request
+### Make a Pull Request
 
 Once the new feature branch has been pushed to the contributor’s
-personal repository, a PR can be created that asks the maintainers
+personal repository, a Pull Request can be created that asks the maintainers
 of the upstream repository to merge the contents of the feature
 branch on the contributor’s repository into the main branch on the
 upstream repository. Specifically, the steps are the following, performed on the upstream remote:
@@ -498,8 +498,8 @@ upstream repository. Specifically, the steps are the following, performed on the
 1. Click on “New Pull Request”
 1. Under “Compare changes”, make sure that `base` is set to `main`, and `compare` is set to the name of your feature branch, `fix-typo`
 1. Click on “Create Pull Request”
-1. A PR window should open up. Provide a descriptive title, and any helpful comments that you want to communicate with the reviewers
-1. Click on “Create Pull Request” in the PR window.
+1. A Pull Request window should open up. Provide a descriptive title, and any helpful comments that you want to communicate with the reviewers
+1. Click on “Create Pull Request” in the Pull Request window.
 
 ## Summary
 
