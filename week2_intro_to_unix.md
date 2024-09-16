@@ -484,22 +484,10 @@ For `ssh`, the basic syntax is:
 $ ssh [username]@[hostname or IP address]
 ~~~
 
-For example, we can `ssh` to a high performance computer (HPC) called Derecho (you may not be able to do this if you don't have access to Derecho):
-
-~~~
-$ ssh yutian@derecho.hpc.ucar.edu
-~~~
-
 For `scp`, the basic syntax is:
 
 ~~~
 $ scp [[user@]host1:]source_file_or_directory [[user@]host2:]destination
-~~~
-
-For example, we can copy a file `test.m` from Derecho to LEAP Pangeo by using `scp`:
-
-~~~
-$ scp yutian@derecho.hpc.ucar.edu:/glade/u/home/yutian/scripts/ars22/test.m .
 ~~~
 
 ## Key Points
