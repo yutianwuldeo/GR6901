@@ -168,6 +168,8 @@ and click on the `Code` button. The URL will be displayed.
 git clone https://github.com/yutianwuldeo/github-sandbox.git
 ~~~
 
+Replace with your GitHub username. 
+
 Note, we did not specify a `local-directory_name` here, so git will
 use the `base name` of the `repository_url`, "github-sandbox" as
 the local directory.
