@@ -300,7 +300,7 @@ which tells us that our file is gone:
 $ ls
 ~~~
 
-*Your home directory is intended only for notebooks, analysis scripts, and small datasets (< 1 GB). It is not an appropriate place to store large datasets. Unlike the cloud buckets, these directories use an underlying storage with a rigid limit. If a single user fills up the space, the Hub crashes for everyone. [LEAP Pangeo](https://leap-stc.github.io/leap-pangeo/jupyterhub.html#) recommends users use less than 25GB and enforce a hard limit of 50GB.* 
+*Your home directory is intended only for notebooks, analysis scripts, and small datasets (< 1 GB). It is not an appropriate place to store large datasets. Unlike the cloud buckets, these directories use an underlying storage with a rigid limit. If a single user fills up the space, the Hub crashes for everyone. [LEAP Pangeo](https://leap-stc.github.io/data/data_locations/#your-jupyterhub-user-directory) recommends users use less than 25GB and enforce a hard limit of 100GB.* 
 
 *To check how much space you are using in your home directory open a terminal window on the hub and run:*
 
