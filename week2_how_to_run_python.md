@@ -2,7 +2,7 @@
 
 An introduction of different ways to run Python code, installing and managing Python with Conda, and running Python with JupyterHub.
 
-*The notes below are adapted from our [textbook](https://earth-env-data-science.github.io/lectures/environment/python_environments.html#) and [Pythia Foundations](https://foundations.projectpythia.org/foundations/getting-started-python.html#).*
+*The notes below are adapted from our [textbook](https://earth-env-data-science.github.io/lectures/environment/python_environments.html#) and [Pythia Foundations](https://foundations.projectpythia.org/foundations/getting-started-python).*
 
 ---
 
@@ -25,7 +25,7 @@ In general, it is always best to test your programs in the same environment in w
 
 For learners who are familiar with basic [Linux commands](https://cheatography.com/davechild/cheat-sheets/linux-command-line/) and text editors (such as Vim or Nano), running Python in the terminal is the quickest route straight to learning Python syntax without the covering the bells and whistles of a new platform. If you are running Python on a supercomputer, through an HTTP request or SSH tunneling, you might want to consider learning in the terminal.
 
-[How to Run Python in the Terminal](https://foundations.projectpythia.org/foundations/terminal.html)
+[How to Run Python in the Terminal](https://foundations.projectpythia.org/foundations/terminal)
 
 ### Jupyter Notebooks
 
@@ -112,6 +112,8 @@ If you want to permanently remove an environment and delete all the data
 associated with it:
 
     $ conda env remove --name my_environment 
+
+*Note that some Pangeo JupyterHub setups (including /srv/conda/envs/) get reset to the base image every time your server restarts so new enviroments vanish on restart. For new environments to persist, create them inside your home directory instead.*
 
 ## Installing More Packages
 
