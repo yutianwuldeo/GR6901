@@ -1,6 +1,6 @@
 # Intro to Git for Version Control
 
-*The notes below are adapted from our [textbook](https://earth-env-data-science.github.io/lectures/environment/intro_to_git.html#) and [Pythia Foundations](https://foundations.projectpythia.org/foundations/getting-started-github.html).*
+*The notes below are adapted from our [textbook](https://earth-env-data-science.github.io/lectures/environment/intro_to_git.html#) and [Pythia Foundations](https://foundations.projectpythia.org/foundations/getting-started-github).*
 
 ---
 
@@ -8,7 +8,7 @@
 
 [Version control](https://en.wikipedia.org/wiki/Version_control) is a powerful way to organize, back up, and share with collaborators your research computing code.
 A Verson control system keeps track of a set of files and saves snapshots (i.e. _versions_, _commits_) of the files at any point in time.
-Using version control allows you to confidently make changes to your code (any any other files), with the ability to roll back to any previous state. This help avoid filling our directories up with files that look like this:
+Using version control allows you to confidently make changes to your code (or any other files), with the ability to roll back to any previous state. This help avoid filling our directories up with files that look like this:
 
     my_code.py
     my_code_version2.py
@@ -126,7 +126,7 @@ The key idea behind both workflows (i.e. **Git Feature Branch Workflow** and **F
 
 Git **branches** allow for non-linear or differing revision histories of a repository. At a point in time, you can split your repository into multiple development paths (branches) where you can make different commits in each, typically with the ultimate intention of merging these branches and development changes together at a later time. Some reasons for wanting to split your repository into multiple branches is to experiment with different methods of solving a problem (before deciding which method will ultimately be merged) and to work on different problems within the same codebase (without confusing which code changes are relevant to which problem).
 
-First of all, set up your username and email:
+First of all, set up your username and email in the terminal (we are doing almost everything in the terminal this week unless otherwise specified):
 
 ~~~
 git config --global user.name "Yutian Wu"
